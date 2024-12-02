@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login e Cadastro</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        .form-container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+        .form-container h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .input-field {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+        .btn {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .btn:hover {
+            background-color: #45a049;
+        }
+        .error-message {
+            color: red;
+            text-align: center;
+            display: none;
+        }
+        .switch-link {
+            text-align: center;
+            margin-top: 10px;
+            cursor: pointer;
+            color: #007bff;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="form-container" id="form-container">
+        <h2>Login</h2>
+        <input type="text" id="login-username" class="input-field" placeholder="Usuário" required>
+        <input type="password" id="login-password" class="input-field" placeholder="Senha" required>
+        <button class="btn" onclick="login()">Entrar</button>
+        <p class="error-message" id="login-error">Credenciais inválidas. Tente novamente.</p>
+        <p class="switch-link" onclick="showSignupForm()">Não tem uma conta? Cadastre-se</p>
+    </div>
+
+    <div class="form-container" id="signup-container" style="display: none;">
+        <h2>Cadastro</h2>
+        <input type="text" id="signup-username" class="input-field" placeholder="Usuário" required>
+        <input type="password" id="signup-password" class="input-field" placeholder="Senha" required>
+        <button class="btn" onclick="signup()">Cadastrar</button>
+        <p class="error-message" id="signup-error">Usuário já cadastrado. Tente outro.</p>
+        <p class="switch-link" onclick="showLoginForm()">Já tem uma conta? Faça login</p>
+    </div>
+
+    <script>
+        // Função para exibir o formulário de login
+        function showLoginForm() {
+            document.getElementById('form-container').style.display = 'block';
+            document.getElementById('signup-container').style.display = 'none';
+            document.getElementById('signup-error').style.display = 'none';
+        }
+
+        // Função para exibir o formulário de cadastro
+        function showSignupForm() {
+            document.getElementById('form-container').style.display = 'none';
+            document.getElementById('signup-container').style.display = 'block';
+            document.getElementById('login-error').style.display = 'none';
+        }
+
+        // Função de login
+        function login() {
+            const username = document.getElementById('login-username').value;
+            const password = document.getElementById('login-password').value;
+
+            // Verificar se o usuário está cadastrado no LocalStorage
+            const user = JSON.parse(localStorage.getItem(username));
+            
+            if (user && user.password === password) {
+                alert('Login bem-sucedido!');
+            } else {
+                document.getElementById('login-error').style.display = 'block';
+            }
+        }
+
+        // Função de cadastro
+        function signup() {
+            const username = document.getElementById('signup-username').value;
+            const password = document.getElementById('signup-password').value;
+
+            // Verificar se o usuário já existe no LocalStorage
+            const existingUser = localStorage.getItem(username);
+
+            if (existingUser) {
+                document.getElementById('signup-error').style.display = 'block';
+            } else {
+                const newUser = {
+                    username: username,
+                    password: password
+                };
+
+                // Salvar o novo usuário no LocalStorage
+                localStorage.setItem(username, JSON.stringify(newUser));
+                alert('Cadastro bem-sucedido! Agora faça login.');
+                showLoginForm(); // Exibir o formulário de login após cadastro
+            }
+        }
+    </script>
+
+</body>
+</html>
+

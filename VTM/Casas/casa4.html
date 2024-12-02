@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Venda de Casa</title>
+    <link rel="stylesheet" href="stylecasas.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+            font-size: 14px;
+    background-image: url('Imagens/vecteezy_vector-abstract-background-with-soft-gradient-color-and_6404700.jpg');
+    background-size: 100%;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1, h2, p {
+            margin-bottom: 10px;
+        }
+        img {
+            max-width: 50%;
+            height: auto;
+        }
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+
+    </style>
+</head>
+<body>
+    <!-- Barra de navegação -->
+    <div class="barra">
+        <a href="index_Pi.html">Pagina inicial</a>
+        <a href="index.html">Casas a venda</a>
+        
+        </div>
+    <div class="container">
+        
+        <h1>Casas com Telhado Verde</h1>
+        <img src="imagens/Casas com Telhado Verde.jpg" alt="Foto da casa">
+        <h2> Detalhes Da Casa Ecologica;</h2>
+
+        <p>Área Total: 400M²</p>
+        <p>Número de Quartos: 5</p>
+        <p>Número de Banheiros: 6</p>
+        <p>Número de Vagas: 4</p>
+        <p>Valor do Condomínio:R$5.000,00 </p>
+        <P>Valor do IPTU:R$10.000,00</P>
+        <p>Telefona para Contrato: (11) 4002-8922</p>
+    
+
+        <p>Descrição:
+        Características: São casas que possuem telhados cobertos por vegetação. O telhado verde não só melhora o isolamento térmico da casa, mas também contribui para a redução das ilhas de calor nas áreas urbanas, ajuda na retenção de água da chuva e promove a biodiversidade.</p>
+        <P>Benefícios: Redução da temperatura interna, aproveitamento da água da chuva, promoção da biodiversidade urbana e melhora na qualidade do ar. </P>
+        
+        <p>Preço: R$ 700.000,00</p>
+        <button class="btn" id="botao-notificacao" >Comprar</button>
+    </div>
+
+
+        <!-- Div da notificação -->
+        <div class="notificacao" id="notificacao">
+            Fora de Estoque, Volte mais depois!
+        </div>
+        <script>
+            // Função para mostrar a notificação
+            document.getElementById("botao-notificacao").addEventListener("click", function() {
+                var notificacao = document.getElementById("notificacao");
+                
+                // Exibe a notificação
+                notificacao.style.display = "block";
+    
+                // Esconde a notificação após 3 segundos
+                setTimeout(function() {
+                    notificacao.style.display = "none";
+                }, 3000); // 3000 milissegundos (3 segundos)
+            });
+        </script>
+</body>
+</html>
